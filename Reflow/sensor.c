@@ -19,12 +19,12 @@ void initSensor(void){
     //Start conversion, NOT set here, set during the program execution.
     //    ADCSRA |= (1 << ADSC);
 }
-//
-//void analogRead(){
-//    ADCSRA |= (1 << ADSC);
-//
-//    while (ADCSRA & (1 << ADSC));
-//    adc.adcValue.low = ADCL;
-//    adc.adcValue.high = ADCH;
-//}
+
+void analogRead(){
+    ADCSRA |= (1 << ADSC);
+
+    while (ADCSRA & (1 << ADSC));
+    adc.adcValue.low = ADCL;
+    adc.adcValue.high = ADCH;
+}
 

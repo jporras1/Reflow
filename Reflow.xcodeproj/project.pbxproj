@@ -36,8 +36,8 @@
 		3BF52D7F261D05F500F59518 /* Reflow */ = {
 			isa = PBXGroup;
 			children = (
-				3BF52D80261D05F500F59518 /* main.c */,
 				3BF52D82261D05F500F59518 /* Makefiles */,
+				3BF52D80261D05F500F59518 /* main.c */,
 			);
 			path = Reflow;
 			sourceTree = "<group>";

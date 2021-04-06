@@ -11,6 +11,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B6CC390261D074700BB6349 /* machine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = machine.h; sourceTree = "<group>"; };
 		3BF52D7D261D05F500F59518 /* Index */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Index; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BF52D80261D05F500F59518 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		3BF52D83261D05F500F59518 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 			children = (
 				3BF52D82261D05F500F59518 /* Makefiles */,
 				3BF52D80261D05F500F59518 /* main.c */,
+				3B6CC390261D074700BB6349 /* machine.h */,
 			);
 			path = Reflow;
 			sourceTree = "<group>";

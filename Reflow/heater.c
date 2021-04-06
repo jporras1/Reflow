@@ -8,14 +8,6 @@
 
 #include "machine.h"
 
-//enum States{
-//    OFF = (uint8_t)0,
-//    Preheating = (uint8_t)1,
-//    Soaking = (uint8_t)2,
-//    Reflowing = (uint8_t)3,
-//    Cooling = (uint8_t)4
-//};
-
 volatile float seconds = 0;  // this will get incremented once a second
 volatile long count = 0;
 volatile int lcdCount = 0;

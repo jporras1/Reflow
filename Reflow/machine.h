@@ -33,10 +33,10 @@
 /*---------------------------------------------------------------------------------*/
 
 // Define the machine system include files. NOTE: Do not alter organization.
-//#include "nuts_bolts.h"
-//#include "config.h"
-//#include "defaults.h"
-//#include "cpu_map.h"
+#include "nuts_bolts.h"
+#include "config.h"
+#include "defaults.h"
+#include "cpu_map.h"
 ////#include "liquid_crystal.h"
 ////#include "sensor.h"
 ////#include "heater.h"

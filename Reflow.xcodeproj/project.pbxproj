@@ -7,11 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B6CC393261D081800BB6349 /* nuts_bolts.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CC392261D081800BB6349 /* nuts_bolts.c */; };
+		3B6CC399261D0AA300BB6349 /* defaults.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CC398261D0AA300BB6349 /* defaults.c */; };
+		3B6CC39D261D0C0000BB6349 /* liquid_crystal.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CC39C261D0C0000BB6349 /* liquid_crystal.c */; };
 		3BF52D81261D05F500F59518 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 3BF52D80261D05F500F59518 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3B6CC390261D074700BB6349 /* machine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = machine.h; sourceTree = "<group>"; };
+		3B6CC391261D081800BB6349 /* nuts_bolts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nuts_bolts.h; sourceTree = "<group>"; };
+		3B6CC392261D081800BB6349 /* nuts_bolts.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = nuts_bolts.c; sourceTree = "<group>"; };
+		3B6CC394261D08A800BB6349 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		3B6CC397261D0AA300BB6349 /* defaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defaults.h; sourceTree = "<group>"; };
+		3B6CC398261D0AA300BB6349 /* defaults.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = defaults.c; sourceTree = "<group>"; };
+		3B6CC39A261D0BCC00BB6349 /* cpu_map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpu_map.h; sourceTree = "<group>"; };
+		3B6CC39B261D0C0000BB6349 /* liquid_crystal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = liquid_crystal.h; sourceTree = "<group>"; };
+		3B6CC39C261D0C0000BB6349 /* liquid_crystal.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = liquid_crystal.c; sourceTree = "<group>"; };
 		3BF52D7D261D05F500F59518 /* Index */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Index; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BF52D80261D05F500F59518 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		3BF52D83261D05F500F59518 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -40,6 +51,14 @@
 				3BF52D82261D05F500F59518 /* Makefiles */,
 				3BF52D80261D05F500F59518 /* main.c */,
 				3B6CC390261D074700BB6349 /* machine.h */,
+				3B6CC391261D081800BB6349 /* nuts_bolts.h */,
+				3B6CC392261D081800BB6349 /* nuts_bolts.c */,
+				3B6CC394261D08A800BB6349 /* config.h */,
+				3B6CC397261D0AA300BB6349 /* defaults.h */,
+				3B6CC398261D0AA300BB6349 /* defaults.c */,
+				3B6CC39A261D0BCC00BB6349 /* cpu_map.h */,
+				3B6CC39B261D0C0000BB6349 /* liquid_crystal.h */,
+				3B6CC39C261D0C0000BB6349 /* liquid_crystal.c */,
 			);
 			path = Reflow;
 			sourceTree = "<group>";
@@ -177,6 +196,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B6CC393261D081800BB6349 /* nuts_bolts.c in Sources */,
+				3B6CC399261D0AA300BB6349 /* defaults.c in Sources */,
+				3B6CC39D261D0C0000BB6349 /* liquid_crystal.c in Sources */,
 				3BF52D81261D05F500F59518 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

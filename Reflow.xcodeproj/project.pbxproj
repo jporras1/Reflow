@@ -10,6 +10,8 @@
 		3B6CC393261D081800BB6349 /* nuts_bolts.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CC392261D081800BB6349 /* nuts_bolts.c */; };
 		3B6CC399261D0AA300BB6349 /* defaults.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CC398261D0AA300BB6349 /* defaults.c */; };
 		3B6CC39D261D0C0000BB6349 /* liquid_crystal.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CC39C261D0C0000BB6349 /* liquid_crystal.c */; };
+		3B6CC3A3261D0ECC00BB6349 /* sensor.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CC3A2261D0ECC00BB6349 /* sensor.c */; };
+		3B6CC3A6261D0F5200BB6349 /* heater.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B6CC3A5261D0F5200BB6349 /* heater.c */; };
 		3BF52D81261D05F500F59518 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 3BF52D80261D05F500F59518 /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,10 @@
 		3B6CC39A261D0BCC00BB6349 /* cpu_map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpu_map.h; sourceTree = "<group>"; };
 		3B6CC39B261D0C0000BB6349 /* liquid_crystal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = liquid_crystal.h; sourceTree = "<group>"; };
 		3B6CC39C261D0C0000BB6349 /* liquid_crystal.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = liquid_crystal.c; sourceTree = "<group>"; };
+		3B6CC3A1261D0ECC00BB6349 /* sensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sensor.h; sourceTree = "<group>"; };
+		3B6CC3A2261D0ECC00BB6349 /* sensor.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sensor.c; sourceTree = "<group>"; };
+		3B6CC3A4261D0F5200BB6349 /* heater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = heater.h; sourceTree = "<group>"; };
+		3B6CC3A5261D0F5200BB6349 /* heater.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = heater.c; sourceTree = "<group>"; };
 		3BF52D7D261D05F500F59518 /* Index */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Index; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BF52D80261D05F500F59518 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		3BF52D83261D05F500F59518 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -59,6 +65,10 @@
 				3B6CC39A261D0BCC00BB6349 /* cpu_map.h */,
 				3B6CC39B261D0C0000BB6349 /* liquid_crystal.h */,
 				3B6CC39C261D0C0000BB6349 /* liquid_crystal.c */,
+				3B6CC3A1261D0ECC00BB6349 /* sensor.h */,
+				3B6CC3A2261D0ECC00BB6349 /* sensor.c */,
+				3B6CC3A4261D0F5200BB6349 /* heater.h */,
+				3B6CC3A5261D0F5200BB6349 /* heater.c */,
 			);
 			path = Reflow;
 			sourceTree = "<group>";
@@ -199,6 +209,8 @@
 				3B6CC393261D081800BB6349 /* nuts_bolts.c in Sources */,
 				3B6CC399261D0AA300BB6349 /* defaults.c in Sources */,
 				3B6CC39D261D0C0000BB6349 /* liquid_crystal.c in Sources */,
+				3B6CC3A3261D0ECC00BB6349 /* sensor.c in Sources */,
+				3B6CC3A6261D0F5200BB6349 /* heater.c in Sources */,
 				3BF52D81261D05F500F59518 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

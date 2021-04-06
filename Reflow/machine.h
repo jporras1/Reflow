@@ -37,9 +37,9 @@
 #include "config.h"
 #include "defaults.h"
 #include "cpu_map.h"
-////#include "liquid_crystal.h"
-////#include "sensor.h"
-////#include "heater.h"
+#include "liquid_crystal.h"
+#include "sensor.h"
+#include "heater.h"
 
 
 /*---------------------------------------------------------------------------------*/

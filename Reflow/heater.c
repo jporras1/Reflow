@@ -35,6 +35,7 @@ void action(void){
     started = true;
     state = 1;
 
+//    TIMSK1 |= (1 << OCIE1A);
     // TODO: Here I will remove a part of the timer setup code, and add it here so that the ISR code only runs when the action is called. But will need to figure out where to remove it again, Ideally in the OFF, and Default portion of the switch statment in ISR.
 
 }
@@ -69,7 +70,7 @@ ISR(TIM1_COMPA_vect){
     LCD_sendString("Temp: ");
     LCD_changeAddress(0x46);
     lcdPrintDouble((adc.value * 0.29));
-    LCD_sendString(" C   ");
+    LCD_sendString("`C   ");
     LCD_changeAddress(0x4F);
     if (state) {
         LCD_sendString("O");

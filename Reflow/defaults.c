@@ -25,8 +25,7 @@ Profile profiles[4] = {
     {"    Profile 4   ", 75,140,45,125,205,20}
 };
 
-uint8_t stopped = true;
-uint8_t started = false;
+volatile uint8_t stopped = true;
 uint8_t input = 0;
 uint8_t selectedProfile = 0;
 uint8_t profileSelected = false;

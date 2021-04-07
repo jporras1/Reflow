@@ -14,5 +14,6 @@
 #define DEFAULT_THING_1 255
 #endif // End of DEFAULTS_GENERIC
 
+volatile uint8_t started;
 
 #endif /* defaults_h */

@@ -17,34 +17,34 @@ enum States state = OFF;
 
 
 void initHeater(void){
-    //    RELAY_DDR |= RELAY_MASK;
-    //    RELAY_PORT &= ~RELAY_MASK;
-    //
-    //    BUZZER_DDR |= BUZZER_MASK;
-    //    BUZZER_PORT &= ~BUZZER_MASK;
-    //
-    //
-    //    /*this is specific for the attiny84*/
-    //    TCCR1A |= 0;                //This whole register is set to zeros,
-    //    TCCR1B |= (1 << WGM12);     //Set this to enable CTC mode
-    //    TCCR1B |= (1 << CS12) | (1 << CS10);        //setting the prescaler to 1024
-    //    OCR1A = 244; //1,000,000[F_CPU] / (1024[prescaler] * 2 * (1Hz *2)
-    //    TIMSK1 |= (1 << OCIE1A);
+        RELAY_DDR |= RELAY_MASK;
+        RELAY_PORT &= ~RELAY_MASK;
+    
+        BUZZER_DDR |= BUZZER_MASK;
+        BUZZER_PORT &= ~BUZZER_MASK;
+    
+    
+        /*this is specific for the attiny84*/
+        TCCR1A |= 0;                //This whole register is set to zeros,
+        TCCR1B |= (1 << WGM12);     //Set this to enable CTC mode
+        TCCR1B |= (1 << CS12) | (1 << CS10);        //setting the prescaler to 1024
+        OCR1A = 244; //1,000,000[F_CPU] / (1024[prescaler] * 2 * (1Hz *2)
+        TIMSK1 |= (1 << OCIE1A);
 }
 
-//void action(void){
-//    started = true;
-//    state = 1;
-//
-//    // TODO: Here I will remove a part of the timer setup code, and add it here so that the ISR code only runs when the action is called. But will need to figure out where to remove it again, Ideally in the OFF, and Default portion of the switch statment in ISR.
-//
-//}
-//
-//void beep(void){
-//    BUZZER_PORT |= BUZZER_MASK;
-//    _delay_ms(300);
-//    BUZZER_PORT &= ~BUZZER_MASK;
-//}
+void action(void){
+    started = true;
+    state = 1;
+
+    // TODO: Here I will remove a part of the timer setup code, and add it here so that the ISR code only runs when the action is called. But will need to figure out where to remove it again, Ideally in the OFF, and Default portion of the switch statment in ISR.
+
+}
+
+void beep(void){
+    BUZZER_PORT |= BUZZER_MASK;
+    _delay_ms(300);
+    BUZZER_PORT &= ~BUZZER_MASK;
+}
 
 
 //ISR(TIM1_COMPA_vect){

@@ -28,16 +28,16 @@ void initHeater(void){
         TCCR1B |= (1 << WGM12);     //Set this to enable CTC mode
         TCCR1B |= (1 << CS12) | (1 << CS10);        //setting the prescaler to 1024
         OCR1A = 244; //1,000,000[F_CPU] / (1024[prescaler] * 2 * (1Hz *2)
-        TIMSK1 |= (1 << OCIE1A);
+//        TIMSK1 |= (1 << OCIE1A);
 }
 
 void action(void){
     started = true;
     state = 1;
 
-//    TIMSK1 |= (1 << OCIE1A);
+    TIMSK1 |= (1 << OCIE1A);
     // TODO: Here I will remove a part of the timer setup code, and add it here so that the ISR code only runs when the action is called. But will need to figure out where to remove it again, Ideally in the OFF, and Default portion of the switch statment in ISR.
-
+    while (bitSet(TIMSK1, OCIE1A));
 }
 
 void beep(void){
@@ -56,7 +56,7 @@ ISR(TIM1_COMPA_vect){
     seconds = (float)count / 4;
 
     analogRead();
-    tempTemperature = adc.value; //analogRead();
+    tempTemperature = (adc.value * 0.29); //analogRead();
 
     if (isnan(tempTemperature)){
         temp = previousTemp;
@@ -82,6 +82,7 @@ ISR(TIM1_COMPA_vect){
         case OFF:
             //set relay pin low.
             RELAY_PORT &= ~RELAY_MASK;
+            TIMSK1 &= ~OCIE1A;
             break;
         case Preheating:
             //pwm relay pin to 75 (0-255) profile[0]
@@ -130,11 +131,13 @@ ISR(TIM1_COMPA_vect){
                 state = OFF;
                 RELAY_PORT &= ~RELAY_MASK;
             }
+            TIMSK1 &= ~OCIE1A;
             break;
         default:
             RELAY_PORT &= ~RELAY_MASK; //set relayPin low,
             state = OFF;
             count = 0;
+            TIMSK1 &= ~OCIE1A;
             break;
     }
 }

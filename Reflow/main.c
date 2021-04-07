@@ -28,6 +28,13 @@ void initIO(void) {
 }
 
 int main(void) {
+    stopped = true;
+    input = 0;
+    selectedProfile = 0;
+    profileSelected = false;
+    isInitialState = true;
+    isInitialChoiceState = true;
+
     initIO();
     
     while (1) {
@@ -75,6 +82,7 @@ int main(void) {
                 isInitialState = true;
                 isInitialChoiceState = true;
 
+                RELAY_PORT |= RELAY_MASK;
                 action();
                 selectedProfile = 0;
                 lcdPrint("    All Done    ", "                ");

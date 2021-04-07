@@ -15,5 +15,23 @@
 #endif // End of DEFAULTS_GENERIC
 
 volatile uint8_t started;
+volatile uint8_t stopped;
+uint8_t input;
+uint8_t selectedProfile;
+uint8_t profileSelected;
+uint8_t isInitialState;
+uint8_t isInitialChoiceState;
+
+typedef struct {
+    char name[17];
+    uint8_t preheatPWM;
+    uint8_t preheatTemp;
+    uint8_t soakDuration;
+    uint8_t reflowPWM;
+    uint8_t reflowTemp;
+    uint8_t reflowDuration;
+} Profile;
+
+Profile profiles[4];
 
 #endif /* defaults_h */

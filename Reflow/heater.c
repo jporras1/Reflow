@@ -36,8 +36,97 @@ void action(void){
     state = 1;
 
     TIMSK1 |= (1 << OCIE1A);
-    // TODO: Here I will remove a part of the timer setup code, and add it here so that the ISR code only runs when the action is called. But will need to figure out where to remove it again, Ideally in the OFF, and Default portion of the switch statment in ISR.
-    while (bitSet(TIMSK1, OCIE1A));
+    
+    while (state != 0) {
+        float tempTemperature = 0;
+        float previousTemp = temp;
+        
+        analogRead();
+        tempTemperature = (adc.value * 0.29); //analogRead();
+        
+        if (isnan(tempTemperature)){
+            temp = previousTemp;
+        }
+        else{
+            temp = tempTemperature;
+        }
+        
+        LCD_clear();
+        LCD_changeAddress(0x40);
+        LCD_sendString("Temp: ");
+        LCD_changeAddress(0x46);
+        lcdPrintDouble((adc.value * 0.29));
+        LCD_sendString("`C   ");
+        LCD_changeAddress(0x4F);
+        lcdPrintNumber((int)state);
+        _delay_ms(50);
+        
+        switch (state) {
+            case OFF:
+                //set relay pin low.
+                RELAY_PORT &= ~RELAY_MASK;
+                TCCR1B &= ~WGM12;
+                //return;
+                
+                break;
+            case Preheating:
+                //pwm relay pin to 75 (0-255) profile[0]
+                // TODO: need to implement the pwm here.
+                
+                //check if temp >= profile[1], 140
+                if (temp >= profiles[selectedProfile].preheatTemp) {
+                    //if true, state = 2; and count = 0;
+                    state = Soaking;
+                    count = 0;
+                }
+                break;
+            case Soaking:
+                //check if avgTemp < profile[1], 140, set relayPin high,
+                if (temp < profiles[selectedProfile].preheatTemp) {
+                    RELAY_PORT |= RELAY_MASK;
+                } else {
+                    // else set relayPin low
+                    RELAY_PORT &= ~RELAY_MASK;
+                }
+                //check if seconds >= profile[2], 45, set state to 3.
+                if (seconds >= profiles[selectedProfile].soakDuration) {
+                    state = Reflowing;
+                }
+                break;
+            case Reflowing:
+                //pwm relay pin to 125, (0-255) profile[3]
+                // TODO: need to implement the pwm here. Again.
+                
+                //check if avgTemp >= profile[4], 205, set state = 4, count = 0
+                if (temp >= profiles[selectedProfile].reflowTemp) {
+                    state = Cooling;
+                    count = 0;
+                }
+                break;
+            case Cooling:
+                //check if avgTemp < profile[4], 205, set realayPin high.
+                if (temp < profiles[selectedProfile].reflowTemp) {
+                    RELAY_PORT |= RELAY_MASK;
+                } else {
+                    //if false, set relayPin low.
+                    RELAY_PORT &= ~RELAY_MASK;
+                }
+                //check if seconds >= profile[5], 20, set state = 0, set relayPin LOW.
+                if (seconds >= profiles[selectedProfile].reflowDuration) {
+                    state = OFF;
+                    RELAY_PORT &= ~RELAY_MASK;
+                }
+                TCCR1B &= ~WGM12;
+                break;
+            default:
+                RELAY_PORT &= ~RELAY_MASK; //set relayPin low,
+                state = OFF;
+                count = 0;
+                TCCR1B &= ~WGM12;
+                break;
+        }
+    }
+    
 }
 
 void beep(void){
@@ -49,96 +138,7 @@ void beep(void){
 
 
 ISR(TIM1_COMPA_vect){
-    float tempTemperature = 0;
-    float previousTemp = temp;
-
     count ++;
     seconds = (float)count / 4;
-
-    analogRead();
-    tempTemperature = (adc.value * 0.29); //analogRead();
-
-    if (isnan(tempTemperature)){
-        temp = previousTemp;
-    }
-    else{
-        temp = tempTemperature;
-    }
-
-
-    LCD_changeAddress(0x40);
-    LCD_sendString("Temp: ");
-    LCD_changeAddress(0x46);
-    lcdPrintDouble((adc.value * 0.29));
-    LCD_sendString("`C   ");
-    LCD_changeAddress(0x4F);
-    if (state) {
-        LCD_sendString("O");
-    }else {
-        LCD_sendString("X");
-    }
-
-    switch (state) {
-        case OFF:
-            //set relay pin low.
-            RELAY_PORT &= ~RELAY_MASK;
-            TIMSK1 &= ~OCIE1A;
-            break;
-        case Preheating:
-            //pwm relay pin to 75 (0-255) profile[0]
-            // TODO: need to implement the pwm here.
-
-            //check if temp >= profile[1], 140
-            if (temp >= profiles[selectedProfile].preheatTemp) {
-                //if true, state = 2; and count = 0;
-                state = Soaking;
-                count = 0;
-            }
-            break;
-        case Soaking:
-            //check if avgTemp < profile[1], 140, set relayPin high,
-            if (temp < profiles[selectedProfile].preheatTemp) {
-                RELAY_PORT |= RELAY_MASK;
-            } else {
-                // else set relayPin low
-                RELAY_PORT &= ~RELAY_MASK;
-            }
-            //check if seconds >= profile[2], 45, set state to 3.
-            if (seconds >= profiles[selectedProfile].soakDuration) {
-                state = Reflowing;
-            }
-            break;
-        case Reflowing:
-            //pwm relay pin to 125, (0-255) profile[3]
-            // TODO: need to implement the pwm here. Again.
-
-            //check if avgTemp >= profile[4], 205, set state = 4, count = 0
-            if (temp >= profiles[selectedProfile].reflowTemp) {
-                state = Cooling;
-                count = 0;
-            }
-            break;
-        case Cooling:
-            //check if avgTemp < profile[4], 205, set realayPin high.
-            if (temp < profiles[selectedProfile].reflowTemp) {
-                RELAY_PORT |= RELAY_MASK;
-            } else {
-                //if false, set relayPin low.
-                RELAY_PORT &= ~RELAY_MASK;
-            }
-            //check if seconds >= profile[5], 20, set state = 0, set relayPin LOW.
-            if (seconds >= profiles[selectedProfile].reflowDuration) {
-                state = OFF;
-                RELAY_PORT &= ~RELAY_MASK;
-            }
-            TIMSK1 &= ~OCIE1A;
-            break;
-        default:
-            RELAY_PORT &= ~RELAY_MASK; //set relayPin low,
-            state = OFF;
-            count = 0;
-            TIMSK1 &= ~OCIE1A;
-            break;
-    }
 }
 

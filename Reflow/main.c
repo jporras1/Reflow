@@ -25,6 +25,7 @@ void initIO(void) {
         initHeater();
         SENSOR_DDR &= ~SENSOR_MASK;
         initSensor();
+    sei();
 }
 
 int main(void) {

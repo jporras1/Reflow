@@ -250,12 +250,18 @@ DEBUG_HOST = localhost
 
 # Define programs and commands.
 SHELL = sh
-CC = /usr/local/bin/avr-gcc
-OBJCOPY = /usr/local/bin/avr-objcopy
-OBJDUMP = /usr/local/bin/avr-objdump
-SIZE = /usr/local/bin/avr-size
-NM = /usr/local/bin/avr-nm
-AVRDUDE = /usr/local/bin/avrdude
+#CC = /usr/local/bin/avr-gcc
+CC = /opt/homebrew/bin/avr-gcc
+#OBJCOPY = /usr/local/bin/avr-objcopy
+OBJCOPY = /opt/homebrew/bin/avr-objcopy
+#OBJDUMP = /usr/local/bin/avr-objdump
+OBJDUMP = /opt/homebrew/bin/avr-objdump
+#SIZE = /usr/local/bin/avr-size
+SIZE = /opt/homebrew/bin/avr-size
+#NM = /usr/local/bin/avr-nm
+NM = /opt/homebrew/bin/avr-nm
+#AVRDUDE = /usr/local/bin/avrdude
+AVRDUDE = /opt/homebrew/bin/avrdude
 REMOVE = rm -f
 COPY = cp
 WINSHELL = cmd

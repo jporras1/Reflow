@@ -62,9 +62,9 @@
 #define SENSOR_BIT                  1
 #define SENSOR_MASK                 (1 << SENSOR_BIT)
 
-#endif //End of CPU_MAP_ATMEGA328P define
+#endif //End of CPU_MAP_ATTINY84 define
 
-
+//////////////////////////////////////////////////////////////////////////////////
 #ifdef CPU_MAP_ATMEGA328P
 
 /************** LCD ****************************/

@@ -127,9 +127,9 @@ void lcdUpdateTemp(char* temp){
 void lcdStateUpate(uint8_t state){
     char symbol_on_off;
     if (state){
-        symbol_on_off = '0';
+        symbol_on_off = "0";
     } else {
-        symbol_on_off = '#';
+        symbol_on_off = "#";
     }
     LCD_changeAddress(0x4F);
     LCD_sendString(symbol_on_off);

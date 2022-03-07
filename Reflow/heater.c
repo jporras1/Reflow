@@ -52,7 +52,7 @@ void action(void){
         
         analogRead();
         //TODO: Convert magic number to a more descriptivly defined constant.
-        tempTemperature = (adc.value * TEMP_CONVERSION_FACTOR); //analogRead(); what is this magic number???
+        tempTemperature = ((((adc.value * 0.004887585533) - 1.25) / 0.005 * 9 / 5) + 17); //analogRead(); what is this magic number???
         
         if (isnan(tempTemperature)){
             temp = previousTemp;
@@ -65,7 +65,8 @@ void action(void){
         LCD_changeAddress(0x40);        // Send to beginning of line 2
         LCD_sendString("Temp: ");
         LCD_changeAddress(0x46);        // Send to spot where temp is written on LCD
-        lcdPrintDouble((adc.value * TEMP_CONVERSION_FACTOR));
+        lcdPrintDouble((((adc.value * 0.004887585533) - 1.25) / 0.005 * 9 / 5) + 17);
+        
         LCD_sendString("'F   ");
         LCD_changeAddress(0x4F);        // Sent to spot where state is written on LCD
         lcdPrintNumber((int)state);

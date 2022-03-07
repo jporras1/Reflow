@@ -9,7 +9,7 @@
 #ifndef heater_h
 #define heater_h
 
-#define TEMP_CONVERSION_FACTOR 0.29
+#define TEMP_CONVERSION_FACTOR 0.004887585533
 
 enum States{
     OFF         = (uint8_t)0,
